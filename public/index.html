@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f8fc">
+  <title>Quiz Buzzer – Đấu trường tri thức</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">Q</span><span>QUIZ<span class="brand-light"> BUZZER</span></span></a>
+    <div class="topbar-right"><span class="live-dot"></span><span id="connection-label">Đang kết nối</span></div>
+  </div>
+  <main id="app" class="shell">
+    <section class="hero">
+      <div class="eyebrow">ĐẤU TRƯỜNG TRI THỨC TRỰC TUYẾN</div>
+      <h1>Mỗi câu hỏi,<br><span>một cơ hội tỏa sáng.</span></h1>
+      <p>Tạo phòng thi, mời thí sinh tham gia và điều khiển cuộc chơi theo thời gian thực.</p>
+    </section>
+    <section class="home-grid">
+      <article class="panel">
+        <div class="panel-icon">✦</div><h2>Dành cho MC</h2>
+        <p>Tạo phòng, nhập đề và điều khiển toàn bộ cuộc thi.</p>
+        <button class="btn btn-primary full" id="go-host">Tạo phòng thi <span>→</span></button>
+      </article>
+      <article class="panel">
+        <div class="panel-icon">⌁</div><h2>Dành cho thí sinh</h2>
+        <p>Nhập mã phòng hoặc sử dụng đường link được chia sẻ.</p>
+        <button class="btn btn-outline full" id="go-player">Tham gia phòng <span>→</span></button>
+      </article>
+    </section>
+    <div class="home-note">Không cần cài đặt · Dùng được trên điện thoại, máy tính và máy tính bảng</div>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
