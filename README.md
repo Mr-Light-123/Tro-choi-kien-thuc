@@ -1,28 +1,25 @@
-# Quiz Buzzer – Đấu trường tri thức (v1.0)
+# Quiz Buzzer – Đấu trường tri thức (v2.0)
 
-Ứng dụng web nhiều người chơi theo thời gian thực, dùng trình duyệt trên điện thoại, máy tính và máy tính bảng.
+Ứng dụng web nhiều người chơi theo thời gian thực, sử dụng trình duyệt trên điện thoại, máy tính và máy tính bảng.
 
-## Chức năng đã có
+## Chức năng
 
-- Host tạo phòng và tải bộ câu hỏi lên.
-- Nhập thủ công theo cặp `[Câu hỏi]|[Câu trả lời]`; có thể viết liền nhiều cặp.
-- Nhập Excel `.xlsx`, `.xls`, `.csv` theo 3 cột `STT | Câu hỏi | Câu trả lời`.
-- Xáo trộn câu hỏi trước khi tạo phòng.
-- 2–12 thí sinh; tên trong phòng không trùng nhau.
-- Mã phòng 6 ký tự, link tham gia và QR.
-- Host, thí sinh và màn hình trình chiếu riêng.
-- Chuông được máy chủ phân xử: chỉ người đầu tiên được nhận quyền.
-- 15 giây chờ chuông; 5 giây trả lời. Đồng hồ chỉ hiện số trong 3 giây cuối.
-- Host xác nhận đúng/sai; đúng +10, sai -5, điểm không dưới 0.
-- Hết giờ trả lời chuyển sang trạng thái chờ host xác nhận sai.
-- Không tự động chuyển câu hoặc tự động công bố đáp án.
-- Mỗi lượt câu hỏi chỉ có một lần bấm chuông. Muốn mở lại, host phải mở lại câu hỏi từ đầu.
-- Host xem toàn bộ bảng điểm; từ 7 người, thí sinh/màn chiếu xem top 4.
-- Host có thể xóa người chơi và đặt lại điểm.
+- Host tạo phòng, nhập bộ câu hỏi thủ công theo cặp `[Câu hỏi]|[Câu trả lời]` hoặc tải Excel `.xlsx`, `.xls`, `.csv` theo 3 cột `STT | Câu hỏi | Câu trả lời`.
+- Xem trước và xóa câu hỏi trước khi tạo phòng; có tùy chọn xáo trộn.
+- 2–12 thí sinh; tên trong phòng không trùng nhau; mã phòng 6 ký tự, link và QR tham gia.
+- Bốn giao diện riêng: Host điều khiển, MC quan sát/dẫn chương trình, màn hình trình chiếu và thí sinh.
+- Khi tạo phòng, các màn hình hiển thị lời chào; câu hỏi chỉ xuất hiện khi Host bắt đầu câu.
+- Host bấm **Mở chuông** thủ công sau khi câu hỏi đã hiển thị. Thời gian chờ chuông mặc định 15 giây, có thể chọn 10/20/30 giây hoặc không giới hạn.
+- Người đầu tiên bấm chuông được ghi nhận ngay. Sau đó hệ thống mở cửa sổ 1,5 giây để ghi nhận tối đa 2 người tiếp theo; người đầu tiên là người duy nhất được trả lời.
+- MC xem câu hỏi, đáp án, thời gian bấm của tối đa 3 thí sinh đầu tiên và toàn bộ bảng điểm. MC không có nút điều khiển.
+- Thời gian trả lời mặc định 5 giây, có thể chọn 10/15/20 giây hoặc không giới hạn. Hết giờ không tự động trừ điểm; Host vẫn quyết định đúng/sai.
+- Host xác nhận đúng +10, sai −5; điểm tối thiểu 0. Mỗi lượt chỉ được ghi nhận một lần.
+- Host có thể hiện đáp án, mở lại câu hỏi từ đầu, chuyển câu, kết thúc trò chơi và công bố bảng xếp hạng riêng biệt.
+- Trong lúc thi, bảng điểm của thí sinh/máy chiếu giữ quy tắc cũ: tối đa 6 người thì hiện tất cả, từ 7 người thì hiện top 4. MC và Host luôn thấy toàn bộ. Khi công bố kết quả cuối cùng, thí sinh và máy chiếu thấy đầy đủ tên và điểm.
 
 ## Chạy thử trên máy tính
 
-Cần cài Node.js 18 trở lên.
+Cần Node.js 18 trở lên.
 
 ```bash
 npm install
@@ -31,33 +28,13 @@ npm start
 
 Mở `http://localhost:3000`.
 
-Để thử nhiều thiết bị trong cùng mạng Wi-Fi, dùng địa chỉ IP nội bộ của máy chạy server, ví dụ `http://192.168.1.10:3000`. Không dùng `localhost` trên điện thoại.
+## Triển khai trên Render
 
-## Đưa lên Internet (Render)
+Cấu hình `render.yaml` dùng `npm install` và `npm start`. Có thể cập nhật mã nguồn trong repository GitHub hiện tại; nếu Render bật Auto-Deploy, dịch vụ sẽ triển khai lại trên URL hiện tại.
 
-1. Tạo tài khoản GitHub và một repository mới.
-2. Tải toàn bộ thư mục dự án này lên repository.
-3. Tạo Web Service mới trên Render và kết nối repository.
-4. Render sẽ nhận cấu hình từ `render.yaml`; build command `npm install`, start command `npm start`.
-5. Sau khi deploy, mở URL Render. Host tạo phòng và chia sẻ QR/link cho thí sinh.
+## Lưu ý
 
-Lưu ý: gói hosting miễn phí có thể ngủ khi không có truy cập, khiến lần mở đầu chậm. Với cuộc thi chính thức, nên chọn dịch vụ hosting ổn định.
-
-## Cách sử dụng
-
-1. Host mở website → Tạo phòng thi.
-2. Nhập thủ công hoặc tải Excel → xem trước → tùy chọn xáo trộn → Tạo phòng.
-3. Chia sẻ mã/QR.
-4. Thí sinh nhập tên để tham gia.
-5. Host bấm **Mở câu hỏi / chuông**.
-6. Người chơi bấm chuông. Nếu có người bấm, máy chủ khóa các chuông khác và bắt đầu 5 giây.
-7. Host bấm **Xác nhận đúng** hoặc **Xác nhận sai**. Nếu quá 5 giây, host vẫn cần bấm xác nhận sai để trừ điểm.
-8. Host có thể **Hiện đáp án**, **Câu tiếp theo**, hoặc **Mở lại từ đầu**. Không có tự động chuyển câu.
-9. Mở màn hình trình chiếu từ nút trên giao diện Host.
-
-## Lưu ý kỹ thuật của bản 1.0
-
-- Dữ liệu phòng đang lưu trong bộ nhớ máy chủ. Nếu dịch vụ khởi động lại hoặc ngủ rồi khởi động lại tiến trình, phòng và điểm hiện tại có thể mất. Không đóng trang Host trong khi đang thi.
-- Mã host được lưu trong localStorage của trình duyệt host để kết nối lại; không chia sẻ thiết bị/tài khoản trình duyệt host.
-- QR và đọc Excel dùng thư viện CDN, cần kết nối Internet.
-- Đây là bản nền có thể chạy và triển khai; trước một cuộc thi chính thức cần thử tải thực tế, kiểm tra mạng tại địa điểm và nâng cấp lưu trữ bền vững nếu cần.
+- Dữ liệu phòng và điểm hiện lưu trong bộ nhớ máy chủ. Khi Render khởi động lại tiến trình hoặc deploy, phòng đang chạy có thể mất. Không deploy trong lúc thi.
+- Mã Host lưu trong localStorage của trình duyệt Host. Không chia sẻ thiết bị/trình duyệt Host.
+- QR và đọc Excel dùng thư viện CDN, cần Internet.
+- Cần thử nghiệm thực tế trên nhiều thiết bị và mạng trước khi dùng trong sự kiện chính thức. Bản này đã được kiểm tra cú pháp JavaScript; chưa thay thế cho kiểm thử tải và diễn tập trực tiếp.
