@@ -1,4 +1,4 @@
-# Quiz Buzzer – Đấu trường tri thức (v3.0)
+# Quiz Buzzer – Đấu trường tri thức (v3.1)
 
 Ứng dụng web nhiều người chơi theo thời gian thực, sử dụng trình duyệt trên điện thoại, máy tính và máy tính bảng.
 
@@ -39,3 +39,9 @@ Cấu hình `render.yaml` dùng `npm install` và `npm start`. Có thể cập n
 - Mã Host lưu trong localStorage của trình duyệt Host. Không chia sẻ thiết bị/trình duyệt Host.
 - QR và đọc Excel dùng thư viện CDN, cần Internet.
 - Cần thử nghiệm thực tế trên nhiều thiết bị và mạng trước khi dùng trong sự kiện chính thức. Bản V3 đã được kiểm tra cú pháp JavaScript; vẫn cần diễn tập trực tiếp trên nhiều thiết bị và mạng trước khi dùng trong sự kiện chính thức.
+
+
+### Điều hướng câu hỏi trên Host (bổ sung)
+- Host có danh sách câu hỏi thu gọn/mở rộng, hiển thị trạng thái Đang thi, Đã trả lời hoặc Chưa trả lời.
+- Chọn một câu khác để chuyển trực tiếp đến câu đó; nếu đang có lượt thi diễn ra, Host cần xác nhận trước khi ngắt lượt hiện tại.
+- Câu được đánh dấu đã trả lời khi Host công bố đáp án hoặc chuyển tiếp sau khi lượt câu hỏi đã kết thúc.
